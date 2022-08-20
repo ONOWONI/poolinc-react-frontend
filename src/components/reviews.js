@@ -44,7 +44,6 @@ export default class Reviews extends React.Component{
             this.setState({count: 0})
         }
         this.setState({reviewDict : this.state.data[this.state.count]})
-        console.log(this.state.count);
     }
 
 
@@ -57,7 +56,6 @@ export default class Reviews extends React.Component{
             this.setState({count : this.state.data.length -1})
         }
         this.setState({reviewDict : this.state.data[this.state.count]})
-        console.log(this.state.count);
     }
 
 
