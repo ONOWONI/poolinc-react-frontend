@@ -19,7 +19,7 @@ class Shop extends React.Component{
     }
 
     fetchData() {
-        fetch('https://poolinc.herokuapp.com/api/products')
+        fetch("https://poolinc.herokuapp.com/api/products")
         .then(res => res.json())
         .then((data) => {
             this.setState({

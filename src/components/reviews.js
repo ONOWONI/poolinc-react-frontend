@@ -20,7 +20,7 @@ export default class Reviews extends React.Component{
     }
 
     fetchData() {
-        fetch('https://poolinc.herokuapp.com/api/reviews')
+        fetch("https://poolinc.herokuapp.com/api/reviews")
         .then(res => res.json())
         .then((data) => {
             this.setState({
