@@ -15,7 +15,6 @@ export default function ReviewModal(props) {
             }
         })
     }
-    console.log(form)
 
     function handleSubmit(event) {
         event.preventDefault()

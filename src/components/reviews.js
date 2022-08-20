@@ -26,7 +26,6 @@ export default class Reviews extends React.Component{
             this.setState({
                 data: data
             });
-            console.log(data);
         });
     }
 
