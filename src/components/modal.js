@@ -6,7 +6,6 @@ export default function Modal(props) {
             {props.openModal &&
             <div className="modal-container" >
                <div className='modal-img'>
-                    {console.log(true)}
                     <img src={`../img/${props.modal.image}`}  alt='modal pic' />
                 </div>
                 <div className='modal-info'>
