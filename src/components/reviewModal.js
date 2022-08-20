@@ -35,6 +35,10 @@ export default class ReviewModal extends React.Component{
                     "review" : this.state.review,
                 })
             })
+        this.setState({
+            name: '',
+            review:""
+        })
         this.props.close()
     }
     render() {

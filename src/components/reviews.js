@@ -70,14 +70,14 @@ export default class Reviews extends React.Component{
             <div id="reviews" >
                 <h2>Feedback from our clients</h2>
                 <div className="review-container">
-                    <button id="left" onClick={this.prevClick}>Prev</button>
+                    <button id="left" onClick={this.prevClick} className='left' >Prev</button>
                     <div className="review-card">
                         <blockquote className='review-text'>
                             {this.state.reviewDict.review}
                         </blockquote>
                         <cite className="review-owner">~ {this.state.reviewDict.name}~</cite>
                     </div>
-                    <button id="right" onClick={this.nextClick}>Next</button>
+                    <button id="right" onClick={this.nextClick} className='right' >Next</button>
                 </div>
                 <button className='header-contact' id='review-btn' onClick={() => this.setState({modal : true})}>Submit your review</button>
                 <ReviewModal modal={this.state.modal} close={() => this.closeModal()} />
