@@ -1,39 +1,57 @@
 import React from "react"
 
-export default function ReviewModal(props) {
-    const [form, setForm] = React.useState({
-        name: '',
-        review: ''
-    })
 
-    function handleClick(event) {
+
+export default class ReviewModal extends React.Component{
+    constructor(props) {
+        super(props);
+        this.state={
+            name: '',
+            review: '',
+        }
+        this.handleClick = this.handleClick.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+
+    handleClick(event) {
         const {name, value} = event.target
-        setForm(prev =>{
-            return {
-                ...prev,
+        this.setState({
                 [name] :value
-            }
-        })
+            })
     }
 
-    function handleSubmit(event) {
+    handleSubmit(event) {
         event.preventDefault()
-        props.close()
+        fetch("https://poolinc.herokuapp.com/api/reviews",
+            {
+                method: "POST",
+                headers:{
+                    "Accept":"application/json",
+                    "Content-Type" : "application/json",
+                },
+                body: JSON.stringify({
+                    "name" : this.state.name,
+                    "review" : this.state.review,
+                })
+            })
+        this.props.close()
     }
-
-    return (
-        <div className="overlay" >
-            {props.modal &&
-            <div className="modal-container" >
-                <form className='modal-info-review' onSubmit={handleSubmit}>
-                    <button onClick={props.close} className='closebtn'> X </button>
-                    <h3>Name</h3>
-                    <input type='text' placeholder='Enter your name' value={form.name} name='name' onChange={handleClick}/>
-                    <h3>Review</h3>
-                    <textarea type='textarea' placeholder='Enter your Comment' value={form.review} name='review' onChange={handleClick} />
-                    <button>Submit</button>
-                </form>
-            </div>}
-        </div>
-    )
+    render() {
+        return (
+            <div className="overlay" >
+                {this.props.modal &&
+                <div className="modal-container" >
+                    <form className='modal-info-review' onSubmit={this.handleSubmit}>
+                        <button onClick={this.props.close} className='closebtn'> X </button>
+                        <h3>Name</h3>
+                        <input type='text' placeholder='Enter your name' value={this.state.name} name='name' onChange={this.handleClick}/>
+                        <h3>Review</h3>
+                        <textarea type='textarea' placeholder='Enter your Comment' value={this.state.review} name='review' onChange={this.handleClick} />
+                        <button>Submit</button>
+                    </form>
+                </div>}
+            </div>
+        )
+    }
 }
